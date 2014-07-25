@@ -7,7 +7,7 @@ package mango;
  * Time: 21:44
  * To change this template use File | Settings | File Templates.
  */
-public class LoginPage {
+public class LoginPage extends abstractPage {
     public void loginAsConsumer(String username, String password) {
 
     }

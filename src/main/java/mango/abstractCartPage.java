@@ -9,4 +9,9 @@ package mango;
  */
 public class abstractCartPage extends abstractHeaderPage {
 
+    public void continueTheShopping()
+    {
+
+    }
+
 }

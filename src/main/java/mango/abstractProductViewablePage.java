@@ -16,4 +16,10 @@ public class abstractProductViewablePage extends abstractHeaderPage {
     public void addProductToBasket(int qty) {
 
     }
+    public void addToComparelist() {
+    }
+
+    public void addToWishlist() {
+
+    }
 }

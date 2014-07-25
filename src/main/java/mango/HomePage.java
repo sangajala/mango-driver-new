@@ -10,7 +10,15 @@ package mango;
 public class HomePage extends abstractHeaderPage {
 
 
-    public void gotoCatagory(String category) {
+    public void gotoCategory(String category) {
 
+    }
+
+    public void goToSubcategory(String scategory) {
+    }
+
+    public boolean isUserInHomePage()
+    {
+        return true;
     }
 }

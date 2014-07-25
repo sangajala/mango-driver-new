@@ -15,4 +15,15 @@ public abstract class abstractHeaderPage extends abstractPage{
     public void gotoShoppingCart() {
 
     }
+    public void goToComparelist() {
+
+    }
+    public void goToWishlist()
+    {
+
+    }
+    public void logout()
+    {
+
+    }
 }

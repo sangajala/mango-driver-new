@@ -9,4 +9,8 @@ package mango;
  */
 public class ListOfItemsPage extends abstractProductViewablePage{
 
+    public void goToProduct(String item) {
+    }
+
+
 }

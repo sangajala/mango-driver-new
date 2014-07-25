@@ -8,7 +8,12 @@ package mango;
  * To change this template use File | Settings | File Templates.
  */
 public class ShoppingCartPage extends abstractCartPage{
+
+    public boolean isItemPresent(){
+        return true;
+    }
     public void checkOutBasket() {
 
     }
+
 }
