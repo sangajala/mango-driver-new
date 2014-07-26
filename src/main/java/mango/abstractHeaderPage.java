@@ -1,5 +1,8 @@
 package mango;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sriramangajala
@@ -9,7 +12,8 @@ package mango;
  */
 public abstract class abstractHeaderPage extends abstractPage{
     public void gotoLogin() {
-
+        WebElement loginButton = driver.findElement(By.xpath("//*[@id='shopbar-account']/a/span[1]/span[2]"));
+        loginButton.click();
     }
 
     public void gotoShoppingCart() {
