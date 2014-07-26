@@ -102,41 +102,25 @@ public class E2ETestSuite extends baseTestSuite{
         REPORTER.isTrue(homePage.isUserInHomePage());
     }
     @Test
-    public void verifyItemsAddedToBasket()
+    public void verifyAfterLoggedOutAndLoggedInItemStillPresent()
     {
-
-        homePage.gotoLogin();
-        LoginPage loginPage = new LoginPage();
-        loginPage.loginAsConsumer(username,password);
-        homePage.gotoCatagory(category);
-        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
-        listOfItemPage.selectProduct(product);
-        ProductPage productPage    = new ProductPage();
-        productPage.addProductToBasket(qty);
-    }
-    @Test
-    public void verifyItemDeleteInBasket(){
         HomePage homePage = new  HomePage();
         homePage.gotoLogin();
         LoginPage loginPage = new LoginPage();
         loginPage.loginAsConsumer(username,password);
-        homePage.gotoCatagory(category);
+        homePage.gotoCategory(category2);
         ListOfItemsPage listOfItemPage = new ListOfItemsPage();
-        listOfItemPage.selectProduct(product);
-        ProductPage productPage=new ProductPage();
+        listOfItemPage.selectProduct(item3);
+        ProductPage productPage = new ProductPage();
         productPage.addProductToBasket(qty);
-    }
-    @Test
-    public void verifyDeliveryOptionAvailable(){
-
-    }
-
-    @Test
-    public void verifyAmoutIncrease(){
-
-    }
-    @Test
-    public void verifyAmountDecrease(){
+        productPage.gotoShoppingCart();
+        ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
+        shoppingCartPage.isItemPresent();
+        homePage.logout();
+        homePage.gotoLogin();
+        loginPage.loginAsConsumer(username,password);
+        productPage.gotoShoppingCart();
+        REPORTER.isTrue(shoppingCartPage.isItemPresent());
 
     }
 
