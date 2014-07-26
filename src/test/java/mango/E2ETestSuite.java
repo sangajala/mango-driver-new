@@ -102,6 +102,43 @@ public class E2ETestSuite extends baseTestSuite{
         REPORTER.isTrue(homePage.isUserInHomePage());
     }
     @Test
+    public void verifyItemsAddedToBasket()
+    {
+
+        homePage.gotoLogin();
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginAsConsumer(username,password);
+        homePage.gotoCatagory(category);
+        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
+        listOfItemPage.selectProduct(product);
+        ProductPage productPage    = new ProductPage();
+        productPage.addProductToBasket(qty);
+    }
+    @Test
+    public void verifyItemDeleteInBasket(){
+        HomePage homePage = new  HomePage();
+        homePage.gotoLogin();
+        LoginPage loginPage = new LoginPage();
+        loginPage.loginAsConsumer(username,password);
+        homePage.gotoCatagory(category);
+        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
+        listOfItemPage.selectProduct(product);
+        ProductPage productPage=new ProductPage();
+        productPage.addProductToBasket(qty);
+    }
+    @Test
+    public void verifyDeliveryOptionAvailable(){
+
+    }
+
+    @Test
+    public void verifyAmoutIncrease(){
+
+    }
+    @Test
+    public void verifyAmountDecrease(){
+
+    }
 
 
 }
