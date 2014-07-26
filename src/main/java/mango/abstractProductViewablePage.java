@@ -1,5 +1,8 @@
 package mango;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sriramangajala
@@ -10,7 +13,8 @@ package mango;
 public class abstractProductViewablePage extends abstractHeaderPage {
 
     public void selectProduct(String product) {
-
+        WebElement selecProd = driver.findElement(By.xpath("//*[@id='megamenu']/div/div/ul[1]/li[1]/a"));
+        selecProd.click();
     }
 
     public void addProductToBasket(int qty) {

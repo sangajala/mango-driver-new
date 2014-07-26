@@ -1,5 +1,8 @@
 package mango;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
 /**
  * Created with IntelliJ IDEA.
  * User: sriramangajala
@@ -13,7 +16,8 @@ public class ShoppingCartPage extends abstractCartPage{
         return true;
     }
     public void checkOutBasket() {
-
+        WebElement checkOuBask = driver.findElement(By.xpath("//*[@id='megamenu']/div/div/ul[1]/li[1]/a"));
+        checkOuBask.click();
     }
 
 }
