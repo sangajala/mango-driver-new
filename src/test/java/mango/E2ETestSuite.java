@@ -101,6 +101,7 @@ public class E2ETestSuite extends baseTestSuite{
         shoppingCartPage.continueTheShopping();
         REPORTER.isTrue(homePage.isUserInHomePage());
     }
+    @Test
 
 
 }
