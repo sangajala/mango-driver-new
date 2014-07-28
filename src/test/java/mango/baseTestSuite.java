@@ -3,6 +3,7 @@ package mango;
 import mango.utils.BrowserFactory;
 import mango.utils.REPORTER;
 import org.apache.log4j.Logger;
+import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -115,19 +116,19 @@ public abstract class baseTestSuite {
 
 
     }
-    @Before
+   // @Before
     public void beforeMethod()
     {
 //        REPORTER.setIteration((m.getName()));
     }
 
 
-    //@After
+   // @After
     public void afterMethod() {
 //        sl.captureScreen(result.getMethod().getMethodName());
         LOGGER.info("I am in after method");
         driver.quit();
-        driver = null;
+       driver = null;
 //        selSer.stop();
 //        sl = null;
     }
@@ -149,9 +150,14 @@ public abstract class baseTestSuite {
 //        URL url = new URL(PROPERTIES.getProperty("SERVERURL"));
 
         driver = BrowserFactory.getBrowser(browser);
+        //implicit wait
+        driver.manage().timeouts().implicitlyWait(60,TimeUnit.SECONDS);
+        //maximize the window
+        driver.manage().window().maximize();
        // driver = new RemoteWebDriver(new URL("http://cb_ram-core:2c259106-416c-4890-9e0a-9f09ccb96c74@ondemand.saucelabs.com:80/wd/hub"), capabilities);
 
         driver.get("http://frontend.smartstore.net/en/");
+
     }
 
 //    protected void startBrowser(String browser) {

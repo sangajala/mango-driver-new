@@ -10,14 +10,16 @@ import org.openqa.selenium.WebElement;
  * Time: 21:47
  * To change this template use File | Settings | File Templates.
  */
-public class ShoppingCartPage extends abstractCartPage{
+public class ShoppingCartPage extends abstractCartPage {
 
-    public boolean isItemPresent(){
-        return true;
+    public boolean isItemPresent(String item) {
+        {
+            if (driver.findElement(By.linkText(item)).isDisplayed()) return true;
+            else return false;
+        }
     }
-    public void checkOutBasket() {
-        WebElement checkOuBask = driver.findElement(By.xpath("//*[@id='megamenu']/div/div/ul[1]/li[1]/a"));
-        checkOuBask.click();
-    }
+
 
 }
+
+

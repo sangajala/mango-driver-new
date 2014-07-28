@@ -27,6 +27,15 @@ public class WaitUtils {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(by));
     }
 
+    public static void pause(int time)
+    {
+        try {
+            Thread.sleep(time*100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void implicitWait() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
