@@ -33,27 +33,34 @@ public class E2ETestSuite extends baseTestSuite{
 
 
     ////-----------end of data----------//
+    //creating object//
+
+    HomePage homePage = new  HomePage();
+    LoginPage loginPage = new LoginPage();
+    ListOfItemsPage listOfItemPage = new ListOfItemsPage();
+    ProductPage productPage    = new ProductPage();
+    ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
+    CheckOutPage checkOutPage = new CheckOutPage();
+    PaymentPage paymentPage=new PaymentPage();
+    ComparelistPage comparelistPage=new ComparelistPage();
+    WishlistPgae wishlistPage =new WishlistPgae();
+    ConfirmationPage confirmationPage=new ConfirmationPage();
+
+
     @Test
     public void  verifyPaymentOptionShownAfterCheckOut()
     {
 
-        HomePage homePage = new  HomePage();
         homePage.gotoLogin();
-        LoginPage loginPage = new LoginPage();
         loginPage.loginAsConsumer(username,password);
         homePage.gotoCategory(category);
         homePage.goToSubcategory(scategory);
-        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
         listOfItemPage.selectProduct(product);
-        ProductPage productPage    = new ProductPage();
         productPage.addProductToBasket(qty);
         productPage.goToBasket();
         productPage.gotoShoppingCart();
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.gotCheckOut();
-        CheckOutPage checkOutPage = new CheckOutPage();
         checkOutPage.gotoPayment();
-        PaymentPage paymentPage=new PaymentPage();
         REPORTER.isTrue(paymentPage.isPaymentOptionsShown());
         homePage.logout();
 
@@ -61,20 +68,17 @@ public class E2ETestSuite extends baseTestSuite{
     @Test
     public void verifyUserCanCompareTheItemsWithoutLogin()
     {
-        HomePage homepage=new HomePage();
-        homepage.gotoCategory(category1);
-        homepage.goToSubcategory(scategory1);
-        ListOfItemsPage listOfItemsPage=new ListOfItemsPage();
-        listOfItemsPage.selectProduct(item1);
-        listOfItemsPage.addToComparelist(compare);
-        homepage.gotoCategory(category1);
-        homepage.goToSubcategory(scategory2);
-        listOfItemsPage.selectProduct(item2);
-        ProductPage productPage    = new ProductPage();
+
+        homePage.gotoCategory(category1);
+        homePage.goToSubcategory(scategory1);
+        listOfItemPage.selectProduct(item1);
+        listOfItemPage.addToComparelist(compare);
+        homePage.gotoCategory(category1);
+        homePage.goToSubcategory(scategory2);
+        listOfItemPage.selectProduct(item2);
         productPage.addToComparelist(compare);
         productPage.goToComparelist();
         productPage.goToComparelistPage();
-        ComparelistPage comparelistPage=new ComparelistPage();
         REPORTER.isTrue(comparelistPage.isItemCompared(item1,item2));
 
 
@@ -82,37 +86,29 @@ public class E2ETestSuite extends baseTestSuite{
     @Test
     public void verifyItemCanAddToCartFromWishlistPage()
     {
-        HomePage homepage=new HomePage();
-        homepage.gotoCategory(category1);
-        homepage.goToSubcategory(scategory1);
-        ListOfItemsPage listOfItemsPage =new ListOfItemsPage();
-        listOfItemsPage.selectProduct(item1);
-        ProductPage productPage    = new ProductPage();
+
+        homePage.gotoCategory(category1);
+        homePage.goToSubcategory(scategory1);
+        listOfItemPage.selectProduct(item1);
         productPage.addToWishlist();
         productPage.goToWishlist();
         productPage.goToWishlistPage();
-        WishlistPgae wishlistPage =new WishlistPgae();
         wishlistPage.addToCartFromWishlist();
-        ShoppingCartPage shoppingCartPage =new ShoppingCartPage();
         REPORTER.isTrue(shoppingCartPage.isItemPresent(item1));
 
     }
     @Test
     public void verifyUserCanContinueTheShoppingAfterGoingToCart()
     {
-        HomePage homePage = new  HomePage();
+
         homePage.gotoLogin();
-        LoginPage loginPage = new LoginPage();
         loginPage.loginAsConsumer(username,password);
         homePage.gotoCategory(category2);
         homePage.goToSubcategory(scategory2_1);
-        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
         listOfItemPage.selectProduct(item3);
-        ProductPage productPage = new ProductPage();
         productPage.addProductToBasket(qty);
         productPage.goToBasket();
         productPage.gotoShoppingCart();
-        ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
         shoppingCartPage.continueTheShopping();
         REPORTER.isTrue(homePage.isUserInHomePage(scategory2_1));
         homePage.logout();
@@ -120,19 +116,14 @@ public class E2ETestSuite extends baseTestSuite{
     @Test
     public void verifyAfterLoggedOutAndLoggedInItemStillPresent()
     {
-        HomePage homePage = new  HomePage();
         homePage.gotoLogin();
-        LoginPage loginPage = new LoginPage();
         loginPage.loginAsConsumer(username,password);
         homePage.gotoCategory(category2);
         homePage.goToSubcategory(scategory2_1);
-        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
         listOfItemPage.selectProduct(item3);
-        ProductPage productPage = new ProductPage();
         productPage.addProductToBasket(qty);
         productPage.goToBasket();
         productPage.gotoShoppingCart();
-        ShoppingCartPage shoppingCartPage=new ShoppingCartPage();
         shoppingCartPage.isItemPresent(item3);
         homePage.logout();
         homePage.gotoLogin();
@@ -147,27 +138,19 @@ public class E2ETestSuite extends baseTestSuite{
     public void  verifyUserCanConfirmTheOrderWithCashAfterDeliveryMethod()
     {
 
-        HomePage homePage = new  HomePage();
         homePage.gotoLogin();
-        LoginPage loginPage = new LoginPage();
         loginPage.loginAsConsumer(username,password);
         homePage.gotoCategory(category);
         homePage.goToSubcategory(scategory);
-        ListOfItemsPage listOfItemPage = new ListOfItemsPage();
         listOfItemPage.selectProduct(product);
-        ProductPage productPage    = new ProductPage();
         productPage.addProductToBasket(qty);
         productPage.goToBasket();
         productPage.gotoShoppingCart();
-        ShoppingCartPage shoppingCartPage = new ShoppingCartPage();
         shoppingCartPage.gotCheckOut();
-        CheckOutPage checkOutPage = new CheckOutPage();
         checkOutPage.gotoPayment();
-        PaymentPage paymentPage=new PaymentPage();
         paymentPage.confirmOrderWithCashAfterDeliveryMethod();
         paymentPage.acceptTerms();
         paymentPage.confirmOdrer();
-        ConfirmationPage confirmationPage=new ConfirmationPage();
         REPORTER.isTrue(confirmationPage.isOrderConfirmed());
         homePage.logout();
 
