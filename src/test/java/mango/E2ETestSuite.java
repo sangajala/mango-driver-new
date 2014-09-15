@@ -50,7 +50,7 @@ public class E2ETestSuite extends baseTestSuite{
     @Test
     public void  verifyPaymentOptionShownAfterCheckOut()
     {
-        HomePage homePage = new  HomePage();
+
         homePage.gotoLogin();
         loginPage.loginAsConsumer(username,password);
         homePage.gotoCategory(category);
